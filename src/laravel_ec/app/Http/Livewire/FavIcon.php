@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 
-class Fav extends Component
+class FavIcon extends Component
 {
     public $product;
     public $product_id;
@@ -22,7 +22,7 @@ class Fav extends Component
             ['id' => $this->product->id]
         );
 
-        return view('livewire.fav');
+        return view('livewire.fav-icon');
     }
 
     public function addToFav()

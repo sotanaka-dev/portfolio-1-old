@@ -579,26 +579,23 @@ input[type="number"] {
 
 /* お気に入り */
 
-.fav {
+.fav-icon {
     position: relative;
+    cursor: pointer;
 
-    &__icon {
-        cursor: pointer;
-
-        &--add {
-            color: $gray;
-        }
-
-        &--rm {
-            color: $pink;
-        }
-
-        &--load {
-            color: $light_gray;
-        }
+    &__add {
+        color: $gray;
     }
 
-    &__hide {
+    &__rm {
+        color: $pink;
+    }
+
+    &__load {
+        color: $light_gray;
+    }
+
+    &--hide {
         display: none;
     }
 

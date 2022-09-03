@@ -489,25 +489,23 @@ input[type=number] {
 }
 
 /* お気に入り */
-.fav {
+.fav-icon {
   position: relative;
-}
-.fav__icon {
   cursor: pointer;
 }
-.fav__icon--add {
+.fav-icon__add {
   color: #888;
 }
-.fav__icon--rm {
+.fav-icon__rm {
   color: #e81e63;
 }
-.fav__icon--load {
+.fav-icon__load {
   color: #ccc;
 }
-.fav__hide {
+.fav-icon--hide {
   display: none;
 }
-.fav__speech-balloon {
+.fav-icon__speech-balloon {
   left: -4px;
   bottom: 36px;
 }
