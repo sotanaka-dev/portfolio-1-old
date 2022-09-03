@@ -44,7 +44,7 @@ class ResetAddressee extends Component
             ->section('content');;
     }
 
-    public function resetUser()
+    public function resetAddressee()
     {
         $this->dispatchBrowserEvent('before_validation');
 

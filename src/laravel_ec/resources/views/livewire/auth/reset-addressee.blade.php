@@ -47,5 +47,5 @@
         <input type="tel" class="form-input" id="tel" autocomplete="tel-national" wire:model.lazy="tel" />
     </div>
 
-    <button class="btn btn--lg btn--black" wire:click="resetUser">会員情報を変更</button>
+    <button class="btn btn--lg btn--black" wire:click="resetAddressee">会員情報を変更</button>
 </div>
