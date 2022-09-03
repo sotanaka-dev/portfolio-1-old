@@ -108,7 +108,7 @@ Route::get('products/detail', App\Http\Livewire\ProductDetail::class)
 
 /* アクセス */
 
-Route::get('access', [AccessController::class, 'index'])
+Route::get('access', App\Http\Livewire\Access::class)
     ->name('access');
 
 /* ホーム */
