@@ -30,7 +30,7 @@
     </section>
 
     <section class="products-list products__list">
-        @include('components.products-list')
+        @include('livewire.products.item-list')
     </section>
 
     {{ $products->links('livewire::custom') }}
