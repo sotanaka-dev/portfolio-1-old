@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Fav;
 
 use Livewire\Component;
 
-class QtyInFavList extends Component
+class QtyInItemList extends Component
 {
     public $qty;
     /* Fav, FavItemでお気に入りに追加、削除時にemitToで呼び出し */
@@ -20,7 +20,7 @@ class QtyInFavList extends Component
 
     public function render()
     {
-        return view('livewire.qty-in-fav-list');
+        return view('livewire.fav.qty-in-item-list');
     }
 
     public function increment()

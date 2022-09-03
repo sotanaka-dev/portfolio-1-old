@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Fav;
 
 use Livewire\Component;
 
-class FavItem extends Component
+class Item extends Component
 {
     public $fav;
 
     public function render()
     {
-        return view('livewire.fav-item');
+        return view('livewire.fav.item');
     }
 
     public function rmFromFav()
@@ -25,6 +25,6 @@ class FavItem extends Component
             ['id' => $this->fav['id']]
         );
 
-        $this->emitTo('qty-in-fav-list', 'decrement');
+        $this->emitTo('fav.qty-in-item-list', 'decrement');
     }
 }

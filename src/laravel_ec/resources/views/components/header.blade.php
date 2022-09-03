@@ -70,7 +70,7 @@
 
             <div class="header__icon-wrap">
                 <a class="header__icon" href='{{ route('fav-list') }}'>
-                    @livewire('qty-in-fav-list')
+                    @livewire('fav.qty-in-item-list')
                     <i class="fa-solid fa-heart fa-xl"></i>
                 </a>
 

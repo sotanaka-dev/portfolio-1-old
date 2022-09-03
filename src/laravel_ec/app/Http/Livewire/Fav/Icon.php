@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Fav;
 
 use Livewire\Component;
 
-class FavIcon extends Component
+class Icon extends Component
 {
     public $product;
     public $product_id;
@@ -22,7 +22,7 @@ class FavIcon extends Component
             ['id' => $this->product->id]
         );
 
-        return view('livewire.fav-icon');
+        return view('livewire.fav.icon');
     }
 
     public function addToFav()
@@ -37,7 +37,7 @@ class FavIcon extends Component
             ]
         );
 
-        $this->emitTo('qty-in-fav-list', 'increment');
+        $this->emitTo('fav.qty-in-item-list', 'increment');
     }
 
     public function rmFromFav()
@@ -47,6 +47,6 @@ class FavIcon extends Component
             ['id' => $this->product->id,]
         );
 
-        $this->emitTo('qty-in-fav-list', 'decrement');
+        $this->emitTo('fav.qty-in-item-list', 'decrement');
     }
 }

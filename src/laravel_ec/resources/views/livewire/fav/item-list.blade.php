@@ -17,7 +17,7 @@
 
     <ul class="fav-list__items" id="fav_list_ul">
         @foreach ($fav_list as $fav)
-            @livewire('fav-item', ['fav' => $fav])
+            @livewire('fav.item', ['fav' => $fav])
         @endforeach
     </ul>
 

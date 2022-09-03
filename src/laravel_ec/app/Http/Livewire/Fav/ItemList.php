@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Fav;
 
 use Livewire\Component;
 
-class FavList extends Component
+class ItemList extends Component
 {
     public $fav_list;
 
@@ -15,7 +15,7 @@ class FavList extends Component
 
     public function render()
     {
-        return view('livewire.fav-list')
+        return view('livewire.fav.item-list')
             ->extends('layouts.template')
             ->section('content');
     }

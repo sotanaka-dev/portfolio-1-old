@@ -125,7 +125,7 @@ Route::get('contact', App\Http\Livewire\Contact::class)
 
 /* お気に入り */
 
-Route::get('fav-list', App\Http\Livewire\FavList::class)
+Route::get('fav-list', App\Http\Livewire\Fav\ItemList::class)
     ->name('fav-list');
 
 /* カート */
