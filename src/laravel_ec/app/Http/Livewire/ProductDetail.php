@@ -34,7 +34,7 @@ class ProductDetail extends Component
 
     public function render()
     {
-        return view('livewire.products.detail')
+        return view('livewire.product-detail')
             ->extends('layouts.template')
             ->section('content');
     }
