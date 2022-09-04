@@ -135,21 +135,11 @@ Route::post('cart', [App\Http\Livewire\Cart::class, 'addProduct'])
 Route::get('cart', App\Http\Livewire\Cart::class)
     ->name('cart');
 
-/*
-注文確認
-TODO: 注文完了画面等を作成した場合
-    コントローラー（コンポーネント）：ConfirmOrderとCompleteOrderに分ける
-    blade：order/confirm.blade.phpとorder/complete.blade.phpにする
-*/
+/* 注文 */
 
-Route::controller(OrderController::class)->group(function () {
-    Route::get('order/confirm', 'confirm')
-        ->name('order.confirm')
-        ->middleware('verified');
-    Route::post('order/complete', 'complete')
-        ->name('order.complete')
-        ->middleware('verified');
-});
+Route::get('order', App\Http\Livewire\Order::class)
+    ->name('order')
+    ->middleware('verified');
 
 /* 注文履歴 */
 

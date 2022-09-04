@@ -978,6 +978,12 @@ input[type=number] {
 .order__select-payment {
   margin-bottom: 48px;
 }
+.order__loading {
+  width: 100%;
+  text-align: center;
+  font-size: 2.4rem;
+  color: #888;
+}
 
 .select-payment {
   border: 1px solid #ccc;

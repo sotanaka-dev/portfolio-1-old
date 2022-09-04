@@ -22,7 +22,7 @@
 
     @include('livewire.cart.total-amount')
 
-    <button class=" btn btn--lg btn--black" onclick="location.href='{{ route('order.confirm') }}'">
+    <button class=" btn btn--lg btn--black" onclick="location.href='{{ route('order') }}'">
         注文画面へ進む
     </button>
 </div>
