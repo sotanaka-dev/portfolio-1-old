@@ -177,11 +177,11 @@ Breadcrumbs::for(
 /* 注文確認 */
 
 Breadcrumbs::for(
-    'order.confirm',
+    'order',
     fn (BreadcrumbTrail $trail) =>
     $trail
         ->parent('cart')
-        ->push('ConfirmOrder', route('order.confirm'))
+        ->push('Order', route('order'))
 );
 
 /* 注文履歴 */
