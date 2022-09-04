@@ -38,8 +38,6 @@ class Order extends Component
 
     public function complete()
     {
-        $this->items = session('items');
-
         $order_id = DB::table('orders')
             ->insertGetId([
                 'user_id' => $this->user->id,
