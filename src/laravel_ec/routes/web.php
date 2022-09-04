@@ -112,8 +112,7 @@ Route::get('access', App\Http\Livewire\Access::class)
     ->name('access');
 
 /* ホーム */
-
-Route::get('home', [HomeController::class, 'index'])
+Route::get('home', App\Http\Livewire\Home::class)
     ->name('home')
     ->middleware('verified');
 
