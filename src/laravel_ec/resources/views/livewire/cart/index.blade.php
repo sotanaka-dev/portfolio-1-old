@@ -1,7 +1,7 @@
 @section('title', 'Cart')
 
 <div class="cart container-sm">
-    @foreach ($items as $item)
+    @forelse ($items as $item)
         <div class="cart__item">
             <a class="cart__item-image" href='{{ route('products.detail', ['id' => $item->id]) }}'>
                 <img class="image" src="{{ asset(current(glob($item->path . '*.*'))) }}">
@@ -18,11 +18,19 @@
                 </div>
             </div>
         </div>
-    @endforeach
 
-    @include('livewire.cart.total-amount')
+        @if ($loop->last)
+            @include('livewire.cart.total-amount')
 
-    <button class=" btn btn--lg btn--black" onclick="location.href='{{ route('order') }}'">
-        注文画面へ進む
-    </button>
+            <button class=" btn btn--lg btn--black" onclick="location.href='{{ route('order') }}'">
+                注文画面へ進む
+            </button>
+        @endif
+    @empty
+        <div class="container-sm">
+            <p class="empty-item-message">カートにアイテムが入っていません。</p>
+
+            <button class="btn btn--lg btn--black" onclick="location.href='{{ route('products') }}'">商品一覧へ</button>
+        </div>
+    @endforelse
 </div>

@@ -9,12 +9,6 @@ class Cart extends Component
 {
     public function render(Request $request)
     {
-        if ($request->session()->missing('items')) {
-            return view('livewire.cart.empty')
-                ->extends('layouts.template')
-                ->section('content');
-        }
-
         return view(
             'livewire.cart.index',
             ['items' => \Util::getItemsInTheSession($request)]
