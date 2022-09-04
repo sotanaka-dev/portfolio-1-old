@@ -20,12 +20,7 @@ class OrderHistory extends Component
 
     public function render()
     {
-        if ($this->products->isEmpty()) {
-            return view('livewire.order.history-empty')
-                ->extends('layouts.template')
-                ->section('content');
-        }
-        return view('livewire.order.history')
+        return view('livewire.order-history')
             ->extends('layouts.template')
             ->section('content');
     }

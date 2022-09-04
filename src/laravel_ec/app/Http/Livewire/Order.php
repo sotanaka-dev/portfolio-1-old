@@ -24,11 +24,6 @@ class Order extends Component
         $this->payment = 'クレジットカード';
     }
 
-    public function updatedPayment()
-    {
-        $this->items = session('items');
-    }
-
     public function render()
     {
         return view('livewire.order')
@@ -38,6 +33,8 @@ class Order extends Component
 
     public function complete()
     {
+        $this->items = session('items');
+
         $order_id = DB::table('orders')
             ->insertGetId([
                 'user_id' => $this->user->id,

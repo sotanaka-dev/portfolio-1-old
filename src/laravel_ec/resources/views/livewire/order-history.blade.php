@@ -3,16 +3,18 @@
 <div class="order-history container-sm">
     @include('components.flash-message')
 
-    <div class="order-history__select-box-wrap">
-        <select class="order-history__select-box form-input form-input--circle" wire:model="interval">
-            <option value="">全期間</option>
-            @foreach ($years as $year)
-                <option value="{{ $year }}">{{ $year }}年</option>
-            @endforeach
-        </select>
-    </div>
+    @forelse ($products->groupBy('order_id') as $key => $group)
+        @if ($loop->first)
+            <div class="order-history__select-box-wrap">
+                <select class="order-history__select-box form-input form-input--circle" wire:model="interval">
+                    <option value="">全期間</option>
+                    @foreach ($years as $year)
+                        <option value="{{ $year }}">{{ $year }}年</option>
+                    @endforeach
+                </select>
+            </div>
+        @endif
 
-    @foreach ($products->groupBy('order_id') as $key => $group)
         <div class="order-history__item-group">
             @foreach ($group as $product)
                 @if ($loop->first)
@@ -48,5 +50,11 @@
                 @endif
             @endforeach
         </div>
-    @endforeach
+    @empty
+        <div class="container-sm">
+            <p class="empty-item-message">注文履歴がありません。</p>
+
+            <button class="btn btn--lg btn--black" onclick="location.href='{{ route('products') }}'">商品一覧へ</button>
+        </div>
+    @endforelse
 </div>
