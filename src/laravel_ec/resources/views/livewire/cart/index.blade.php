@@ -27,10 +27,8 @@
             </button>
         @endif
     @empty
-        <div class="container-sm">
-            <p class="empty-item-message">カートにアイテムが入っていません。</p>
+        <p class="empty-item-message">カートにアイテムが入っていません。</p>
 
-            <button class="btn btn--lg btn--black" onclick="location.href='{{ route('products') }}'">商品一覧へ</button>
-        </div>
+        <button class="btn btn--lg btn--black" onclick="location.href='{{ route('products') }}'">商品一覧へ</button>
     @endforelse
 </div>
