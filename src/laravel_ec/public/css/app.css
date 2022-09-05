@@ -510,10 +510,6 @@ input[type=number] {
 }
 
 /* お気に入りリスト */
-.fav-list__heading {
-  margin-bottom: 24px;
-  border-bottom: 1px solid #ccc;
-}
 .fav-list__items {
   display: flex;
   flex-wrap: wrap;

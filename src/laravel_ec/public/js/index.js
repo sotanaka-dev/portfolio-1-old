@@ -130,9 +130,7 @@ window.addEventListener("after_rm_from_fav", (event) => {
 });
 
 function insertFavEmptyMessage() {
-    document.getElementById("fav_list_heading").classList.add("fav-list--hide");
     document.getElementById("fav_list_ul").classList.add("fav-list--hide");
-    document.getElementById("fav_list_empty").classList.add("fav-list--show");
     document.getElementById("fav_list_empty").classList.add("fav-list--show");
     document.getElementById("fav_list_btn").classList.add("fav-list--show");
 }

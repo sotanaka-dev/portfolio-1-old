@@ -609,11 +609,6 @@ input[type="number"] {
 /* お気に入りリスト */
 
 .fav-list {
-    &__heading {
-        margin-bottom: 24px;
-        border-bottom: $border;
-    }
-
     &__items {
         display: flex;
         flex-wrap: wrap;

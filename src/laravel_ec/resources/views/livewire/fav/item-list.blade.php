@@ -13,8 +13,6 @@
         })
     </script>
 
-    <p class="fav-list__heading" id="fav_list_heading"></p>
-
     <ul class="fav-list__items" id="fav_list_ul">
         @foreach ($fav_list as $fav)
             @livewire('fav.item', ['fav' => $fav])
