@@ -21,7 +21,8 @@
         @endforeach
     </ul>
 
-    <p class="fav-list__empty-item-message empty-item-message" id="fav_list_empty">お気に入りリストは空です。</p>
+    <p class="fav-list__empty-item-message empty-item-message" id="fav_list_empty"><i
+            class="fa-solid fa-xmark fa-lg"></i>&nbsp;お気に入りリストは空です。</p>
 
     <button class="fav-list__btn btn btn--lg btn--black" id="fav_list_btn"
         onclick="location.href='{{ route('products') }}'">商品一覧へ</button>

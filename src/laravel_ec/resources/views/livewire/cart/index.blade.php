@@ -27,7 +27,7 @@
             </button>
         @endif
     @empty
-        <p class="empty-item-message">カートにアイテムが入っていません。</p>
+        <p class="empty-item-message"><i class="fa-solid fa-xmark fa-lg"></i>&nbsp;カートは空です。</p>
 
         <button class="btn btn--lg btn--black" onclick="location.href='{{ route('products') }}'">商品一覧へ</button>
     @endforelse

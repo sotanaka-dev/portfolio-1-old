@@ -51,7 +51,7 @@
             @endforeach
         </div>
     @empty
-        <p class="empty-item-message">注文履歴がありません。</p>
+        <p class="empty-item-message"><i class="fa-solid fa-xmark fa-lg"></i>&nbsp;注文履歴がありません。</p>
 
         <button class="btn btn--lg btn--black" onclick="location.href='{{ route('products') }}'">商品一覧へ</button>
     @endforelse

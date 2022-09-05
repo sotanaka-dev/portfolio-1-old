@@ -262,6 +262,7 @@ body {
   color: #fff;
 }
 .breadcrumb__item--active {
+  font-weight: bold;
   color: #fff;
 }
 
@@ -815,11 +816,10 @@ input[type=number] {
 
 /* 空カート（注文履歴） */
 .empty-item-message {
-  padding: 48px 0;
-  margin-bottom: 36px;
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  padding-top: 48px;
+  margin-bottom: 84px;
   text-align: center;
+  font-size: 2rem;
 }
 
 /* カート */
@@ -981,7 +981,7 @@ input[type=number] {
 .order__loading {
   width: 100%;
   text-align: center;
-  font-size: 2.4rem;
+  font-size: 2rem;
   color: #888;
 }
 
