@@ -37,7 +37,7 @@ class Icon extends Component
             ]
         );
 
-        $this->emitTo('fav.qty-in-item-list', 'increment');
+        $this->emitTo('components.qty-in-fav-list', 'increment');
     }
 
     public function rmFromFav()
@@ -47,6 +47,6 @@ class Icon extends Component
             ['id' => $this->product->id,]
         );
 
-        $this->emitTo('fav.qty-in-item-list', 'decrement');
+        $this->emitTo('components.qty-in-fav-list', 'decrement');
     }
 }

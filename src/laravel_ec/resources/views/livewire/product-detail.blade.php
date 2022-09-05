@@ -55,7 +55,7 @@
             @endif
 
             <div class="detail__spin-btn">
-                @livewire('spin-btn', ['max_value' => $product->stock, 'value' => 1])
+                @livewire('components.spin-btn', ['max_value' => $product->stock, 'value' => 1])
             </div>
 
             <button class="btn btn--lg btn--black" type="submit" onclick="document.getElementById('form').submit();">

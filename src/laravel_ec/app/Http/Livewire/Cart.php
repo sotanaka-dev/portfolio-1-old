@@ -38,7 +38,7 @@ class Cart extends Component
         if ($qty < $stock) {
             $qty++;
             $this->qtyUpdate($id, $qty, $request);
-            $this->emitTo('qty-in-cart', 'refresh');
+            $this->emitTo('components.qty-in-cart', 'refresh');
         }
     }
 
@@ -47,7 +47,7 @@ class Cart extends Component
         /* if ($qty > 1) {
             $qty--;
             $this->qtyUpdate($id, $qty, $request);
-            $this->emitTo('qty-in-cart', 'refresh');
+            $this->emitTo('components.qty-in-cart', 'refresh');
         } */
 
         $qty--;
@@ -57,7 +57,7 @@ class Cart extends Component
         } else {
             $this->deleteItem($id, $request);
         }
-        $this->emitTo('qty-in-cart', 'refresh');
+        $this->emitTo('components.qty-in-cart', 'refresh');
     }
 
     public function qtyUpdate($id, $qty, $request)
@@ -76,6 +76,6 @@ class Cart extends Component
             $request->session()->forget('items');
         }
 
-        $this->emitTo('qty-in-cart', 'refresh');
+        $this->emitTo('components.qty-in-cart', 'refresh');
     }
 }

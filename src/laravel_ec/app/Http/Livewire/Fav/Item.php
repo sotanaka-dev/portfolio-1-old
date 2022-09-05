@@ -25,6 +25,6 @@ class Item extends Component
             ['id' => $this->fav['id']]
         );
 
-        $this->emitTo('fav.qty-in-item-list', 'decrement');
+        $this->emitTo('components.qty-in-fav-list', 'decrement');
     }
 }

@@ -70,12 +70,12 @@
 
             <div class="header__icon-wrap">
                 <a class="header__icon" href='{{ route('fav-list') }}'>
-                    @livewire('fav.qty-in-item-list')
+                    @livewire('components.qty-in-fav-list')
                     <i class="fa-solid fa-heart fa-xl"></i>
                 </a>
 
                 <a class="header__icon" href='{{ route('cart') }}'>
-                    @livewire('qty-in-cart')
+                    @livewire('components.qty-in-cart')
                     <i class="fa-solid fa-cart-shopping fa-xl"></i>
                 </a>
             </div>

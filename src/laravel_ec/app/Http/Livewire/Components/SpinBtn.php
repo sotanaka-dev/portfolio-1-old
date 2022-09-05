@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Components;
 
 use Livewire\Component;
 
@@ -13,7 +13,7 @@ class SpinBtn extends Component
 
     public function render()
     {
-        return view('livewire.spin-btn');
+        return view('livewire.components.spin-btn');
     }
 
     public function increment()
