@@ -18,4 +18,9 @@ return [
         'order'      => '注文を確定します。よろしいですか？',
     ],
     'failure' => [],
+    'loading' => [
+        'register'  => '登録処理中',
+        'send_mail' => 'メール送信中',
+        'order'     => '注文処理中',
+    ],
 ];

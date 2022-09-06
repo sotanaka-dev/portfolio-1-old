@@ -1,6 +1,11 @@
 @section('title', 'ResetPassword')
 
 <div class="container-sm">
+    @include('components.full-overlay', [
+        'target' => 'sendResetLinkEmail',
+        'message' => __('messages.loading.send_mail'),
+    ])
+
     <div class="form-group">
         <label class="form-group__label" for="email">メールアドレス</label>
 

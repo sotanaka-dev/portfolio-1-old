@@ -1,6 +1,11 @@
 @section('title', 'Order')
 
 <div class="order container-sm">
+    @include('components.full-overlay', [
+        'target' => 'complete',
+        'message' => __('messages.loading.order'),
+    ])
+
     <div class="order__table table">
         <div class="table__row">
             <span class="table__cell">お名前</span>
@@ -46,7 +51,7 @@
             </label>
         </div>
 
-        <div class="split-btn" wire:loading.remove>
+        <div class="split-btn">
             <div class="split-btn__return">
                 <button class="btn btn--lg btn--black" type="button"
                     onclick="location.href='{{ route('cart') }}'">カートに戻る</button>
@@ -56,10 +61,6 @@
                 <button type="submit" class="btn btn--lg btn--black"
                     onclick="return confirmation('{{ __('messages.confirm.order') }}')">注文を確定する</button>
             </div>
-        </div>
-
-        <div wire:loading class="order__loading">
-            注文処理中&nbsp;<i class="fa-solid fa-circle-notch fa-spin"></i>
         </div>
     </form>
 </div>

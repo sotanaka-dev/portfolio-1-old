@@ -1,6 +1,11 @@
 @section('title', 'Register')
 
 <div class="container-sm h-adr">
+    @include('components.full-overlay', [
+        'target' => 'register',
+        'message' => __('messages.loading.register'),
+    ])
+
     <div class="form-link">
         <div class="form-link__item">
             <a class="link link-line" href="{{ route('login') }}">
@@ -67,5 +72,5 @@
             wire:model.lazy="password" />
     </div>
 
-    <button class="btn btn--lg btn--black" wire:click="register">仮登録</button>
+    <button class="btn btn--lg btn--black" wire:click="register">登録</button>
 </div>

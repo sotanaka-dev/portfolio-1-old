@@ -521,6 +521,29 @@ input[type="number"] {
     }
 }
 
+/* ローディング中のオーバーレイ */
+
+.full-overlay {
+    z-index: 2147483647;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+
+    &__message {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+        font-size: 2.4rem;
+        color: $white;
+    }
+}
+
 /* 確認画面テーブル */
 
 .table {
