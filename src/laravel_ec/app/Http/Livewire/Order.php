@@ -10,18 +10,19 @@ use App\Events\Order as OrderEvent;
 
 class Order extends Component
 {
+    private const INIT_VALUE = 'クレジットカード';
+
     public $user;
     public $items;
-    public $payment;
+    public $payment = self::INIT_VALUE;
 
     public function mount()
     {
         if (session()->missing('items')) {
             return redirect()->route('cart');
         }
-        $this->user    = Auth::user();
-        $this->items   = session('items');
-        $this->payment = 'クレジットカード';
+        $this->user  = Auth::user();
+        $this->items = session('items');
     }
 
     public function render()
@@ -35,12 +36,31 @@ class Order extends Component
     {
         $this->items = session('items');
 
-        $order_id = DB::table('orders')
+        $order_id = $this->getOrderIdAfterInsertOrder();
+
+        $this->insertOrderDetails($order_id);
+
+        OrderEvent::dispatch($this->user, $this->items, $this->payment);
+
+        session()->forget('items');
+
+        return redirect()->route('order.history')
+            ->with('status', __('messages.complete.order'));
+    }
+
+    private function getOrderIdAfterInsertOrder()
+    {
+        return
+            DB::table('orders')
             ->insertGetId([
                 'user_id' => $this->user->id,
                 'payment' => $this->payment,
             ]);
+    }
 
+    // FIXME: N+1問題が未解決
+    private function insertOrderDetails($order_id)
+    {
         foreach ($this->items as $item) {
             DB::table('order_details')
                 ->insert([
@@ -55,12 +75,5 @@ class Order extends Component
                     'stock' => $item->stock - $item->qty,
                 ]);
         }
-
-        OrderEvent::dispatch($this->user, $this->items, $this->payment);
-
-        session()->forget('items');
-
-        return redirect()->route('order.history')
-            ->with('status', __('messages.complete.order'));
     }
 }

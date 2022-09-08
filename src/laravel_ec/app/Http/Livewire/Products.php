@@ -11,12 +11,22 @@ class Products extends Component
 {
     use WithPagination;
 
-    public    $category_id = 0;
-    public    $keyword     = '';
-    public    $sort_by     = 'created_at,desc';
+    private const INDEX_OF_ALL_CATEGORIES = 0;
+    private const EMPTY_CHAR = '';
+    private const INIT_VALUE_OF_SORT_BY = 'created_at,desc';
+    private const DELIMITER_FOR_SORT_BY = ',';
+    private const INDEX_OF_SORT_KEY = 0;
+    private const INDEX_OF_SORT_ORDER = 1;
+    private const DISPLAY_FOR_ALL_CATEGORIES = 'ALL';
+    private const MAX_NUM_OF_DISPLAYS_PER_PAGE = 12;
+
+    public $category_id = self::INDEX_OF_ALL_CATEGORIES;
+    public $keyword     = self::EMPTY_CHAR;
+    public $sort_by     = self::INIT_VALUE_OF_SORT_BY;
+
     protected $queryString = [
-        'category_id' => ['except' => 0],
-        'keyword'     => ['except' => ''],
+        'category_id' => ['except' => self::INDEX_OF_ALL_CATEGORIES],
+        'keyword'     => ['except' => self::EMPTY_CHAR],
         'sort_by'
     ];
 
@@ -61,8 +71,11 @@ class Products extends Component
             ->when($this->keyword, function ($query, $keyword) {
                 return $query->where('name', 'like', "%{$keyword}%");
             })
-            ->orderBy(explode(",", $this->sort_by)[0], explode(",", $this->sort_by)[1])
-            ->paginate(12);
+            ->orderBy(
+                explode(self::DELIMITER_FOR_SORT_BY, $this->sort_by)[self::INDEX_OF_SORT_KEY],
+                explode(self::DELIMITER_FOR_SORT_BY, $this->sort_by)[self::INDEX_OF_SORT_ORDER]
+            )
+            ->paginate(self::MAX_NUM_OF_DISPLAYS_PER_PAGE);
     }
 
     private function getCategories()
@@ -80,6 +93,6 @@ class Products extends Component
                 ->where('id', $this->category_id)
                 ->value('name');
         }
-        return 'ALL';
+        return self::DISPLAY_FOR_ALL_CATEGORIES;
     }
 }

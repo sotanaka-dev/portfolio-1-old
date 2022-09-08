@@ -7,6 +7,9 @@ use Livewire\Component;
 
 class SpinBtn extends Component
 {
+
+    private const MIN_VALUE = 1;
+
     public $max_value;
     public $value;
 
@@ -25,7 +28,7 @@ class SpinBtn extends Component
 
     public function decrement()
     {
-        if ($this->value > 1) {
+        if ($this->value > self::MIN_VALUE) {
             $this->value--;
         }
     }

@@ -6,6 +6,8 @@ use Livewire\Component;
 
 class QtyInFavList extends Component
 {
+    private const INIT_VALUE = 0;
+
     public $qty;
     /* Fav, FavItemでお気に入りに追加、削除時にemitToで呼び出し */
     protected $listeners = [
@@ -15,7 +17,7 @@ class QtyInFavList extends Component
 
     public function mount()
     {
-        $this->qty = 0;
+        $this->qty = self::INIT_VALUE;
     }
 
     public function render()

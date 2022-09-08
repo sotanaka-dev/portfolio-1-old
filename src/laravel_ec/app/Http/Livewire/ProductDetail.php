@@ -9,6 +9,10 @@ use App\Models\Product;
 
 class ProductDetail extends Component
 {
+    private const START_VALUE_OF_INDEX = 0;
+    private const DIFF_BTW_COUNT_AND_INDEX = 1;
+    private const REGEX_FOR_ALL_FILES = '*.*';
+
     public $product_id;
     public $product;
     public $category_name;
@@ -26,10 +30,10 @@ class ProductDetail extends Component
         $this->product_id      = $request->get('id');
         $this->product         = $this->getProduct();
         $this->category_name   = $this->getCategoryName();
-        $this->image_paths     = glob($this->product->path . '*.*');
-        $this->max_length      = count($this->image_paths) - 1;
+        $this->image_paths     = glob($this->product->path . self::REGEX_FOR_ALL_FILES);
+        $this->max_length      = count($this->image_paths) - self::DIFF_BTW_COUNT_AND_INDEX;
         $this->main_image_path = current($this->image_paths);
-        $this->thumbnail_index = 0;
+        $this->thumbnail_index = self::START_VALUE_OF_INDEX;
     }
 
     public function render()
@@ -47,7 +51,7 @@ class ProductDetail extends Component
 
     public function decrementThumbnailIndex()
     {
-        if ($this->thumbnail_index === 0) {
+        if ($this->thumbnail_index === self::START_VALUE_OF_INDEX) {
             $this->thumbnail_index = $this->max_length;
         } else {
             $this->thumbnail_index--;
@@ -59,7 +63,7 @@ class ProductDetail extends Component
     public function incrementThumbnailIndex()
     {
         if ($this->thumbnail_index === $this->max_length) {
-            $this->thumbnail_index = 0;
+            $this->thumbnail_index = self::START_VALUE_OF_INDEX;
         } else {
             $this->thumbnail_index++;
         }
