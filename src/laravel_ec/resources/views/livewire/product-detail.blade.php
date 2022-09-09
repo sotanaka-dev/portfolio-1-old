@@ -55,10 +55,19 @@
             @endif
 
             <div class="detail__spin-btn">
-                @livewire('components.spin-btn', ['max_value' => $product->stock, 'value' => 1])
+                <div class="spin-btn">
+                    <div class="spin-btn--minus" wire:click="decrement">
+                        <i class="fa-solid fa-minus fa-lg"></i>
+                    </div>
+                    <input class="form-input form-input--border-none" type="number" value="{{ $qty }}"
+                        min="1" max="{{ $product->stock }}" required readonly />
+                    <div class="spin-btn--plus" wire:click="increment">
+                        <i class="fa-solid fa-plus fa-lg"></i>
+                    </div>
+                </div>
             </div>
 
-            <button class="btn btn--lg btn--black" type="submit" onclick="document.getElementById('form').submit();">
+            <button class="btn btn--lg btn--black" type="submit" wire:click="addProductToCart">
                 カートに追加
             </button>
         @else
@@ -66,21 +75,5 @@
                 <i class="fa-solid fa-xmark"></i>&nbsp;在庫なし
             </p>
         @endif
-
-        <form id="form" action="{{ route('cart') }}" method="post">
-            @csrf
-            <input type="hidden" name="id" value="{{ $product->id }}">
-            <input type="hidden" name="name" value="{{ $product->name }}">
-            <input type="hidden" name="price" value="{{ $product->price }}">
-            <input type="hidden" name="stock" value="{{ $product->stock }}">
-            <input type="hidden" name="path" value="{{ $product->path }}">
-        </form>
     </div>
 </div>
-
-
-{{-- @php
-    $paths = glob($product->path . '*.*');
-    asort($paths);
-    dump(current($paths));
-@endphp --}}

@@ -129,8 +129,6 @@ Route::get('fav-list', App\Http\Livewire\Fav\ItemList::class)
 
 /* カート */
 
-Route::post('cart', [App\Http\Livewire\Cart::class, 'addProduct'])
-    ->name('cart');
 Route::get('cart', App\Http\Livewire\Cart::class)
     ->name('cart');
 

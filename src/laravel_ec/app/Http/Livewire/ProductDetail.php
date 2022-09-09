@@ -93,4 +93,40 @@ class ProductDetail extends Component
         $this->main_image_path = $this->image_paths[$this->thumbnail_index];
         $this->dispatchBrowserEvent('select_thumbnail', ['id' => $this->thumbnail_index]);
     }
+
+
+    private const MIN_VALUE_OF_SPIN_BTN = 1;
+    public $qty = self::MIN_VALUE_OF_SPIN_BTN;
+
+    public function increment()
+    {
+        if ($this->qty < $this->product->stock) {
+            $this->qty++;
+        }
+    }
+
+    public function decrement()
+    {
+        if ($this->qty > self::MIN_VALUE_OF_SPIN_BTN) {
+            $this->qty--;
+        }
+    }
+
+    /* TODO: リファクタリングしたい */
+    public function addProductToCart()
+    {
+        $items = \Util::getItemsInTheSession();
+
+        if ($items->has($this->product_id)) {
+            $items = $items->toArray();
+            $items[$this->product_id]['qty'] += $this->qty;
+        } else {
+            $item = $this->product->toArray();
+            $item['qty'] = $this->qty;
+            $items->put($this->product_id, $item);
+        }
+        session()->put('items', collect($items));
+
+        return redirect()->route('cart');
+    }
 }
