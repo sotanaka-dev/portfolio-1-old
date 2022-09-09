@@ -11,7 +11,7 @@ class AmountComposer
         $total_amount = 0;
 
         foreach ($view->items as $item) {
-            $total_amount += $item->price * $item->qty;
+            $total_amount += $item['price'] * $item['qty'];
         }
 
         $view->with([

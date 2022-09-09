@@ -10,11 +10,11 @@ class Util extends Facade
     // \Util::method();
 
     /* セッションからカートに追加したアイテムを返す */
-    public static function getItemsInTheSession(Request $request)
+    public static function getItemsInTheSession()
     {
         $items = collect();
-        if ($request->session()->has('items')) {
-            $items = $request->session()->get('items');
+        if (session()->has('items')) {
+            $items = session()->get('items');
         }
         return $items;
     }

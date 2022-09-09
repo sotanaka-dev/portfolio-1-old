@@ -7,16 +7,20 @@ use Illuminate\Http\Request;
 
 class Cart extends Component
 {
-    public function render(Request $request)
+    protected $listeners = [
+        'refresh' => '$refresh',
+    ];
+
+    public function render()
     {
-        return view(
-            'livewire.cart.index',
-            ['items' => \Util::getItemsInTheSession($request)]
-        )
+        return view('livewire.cart', [
+            'items' => \Util::getItemsInTheSession()
+        ])
             ->extends('layouts.template')
             ->section('content');
     }
 
+    /* TODO: ここをdetailに移動したほうがいいかも */
     public function addProduct(Request $request)
     {
         $id    = $request->get('id');
@@ -24,58 +28,13 @@ class Cart extends Component
         $items = \Util::getItemsInTheSession($request);
 
         if ($items->has($id)) {
-            $items[$id]->qty += $qty;
+            $items = $items->toArray();
+            $items[$id]['qty'] += $qty;
         } else {
-            $items->put($id, (object)$request->all());
+            $items->put($id, $request->all());
         }
-        $request->session()->put('items', $items);
+        $request->session()->put('items', collect($items));
 
         return redirect()->route('cart');
-    }
-
-    public function increment($id, $qty, $stock, Request $request)
-    {
-        if ($qty < $stock) {
-            $qty++;
-            $this->qtyUpdate($id, $qty, $request);
-            $this->emitTo('components.qty-in-cart', 'refresh');
-        }
-    }
-
-    public function decrement($id, $qty, Request $request)
-    {
-        /* if ($qty > 1) {
-            $qty--;
-            $this->qtyUpdate($id, $qty, $request);
-            $this->emitTo('components.qty-in-cart', 'refresh');
-        } */
-
-        $qty--;
-
-        if ($qty) {
-            $this->qtyUpdate($id, $qty, $request);
-        } else {
-            $this->deleteItem($id, $request);
-        }
-        $this->emitTo('components.qty-in-cart', 'refresh');
-    }
-
-    public function qtyUpdate($id, $qty, $request)
-    {
-        $items = \Util::getItemsInTheSession($request);
-        $items[$id]->qty = $qty;
-
-        $request->session()->put('items', $items);
-    }
-
-    public function deleteItem($id, Request $request)
-    {
-        $items = \Util::getItemsInTheSession($request);
-        $items->forget($id);
-        if ($items->isEmpty()) {
-            $request->session()->forget('items');
-        }
-
-        $this->emitTo('components.qty-in-cart', 'refresh');
     }
 }
