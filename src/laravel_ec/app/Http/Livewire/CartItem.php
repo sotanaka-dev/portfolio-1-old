@@ -52,7 +52,7 @@ class CartItem extends Component
         session()->put('items', collect($items));
     }
 
-    public function deleteItem()
+    public function removeItem()
     {
         $items = \Util::getItemsInTheSession();
         $items->forget($this->item_id);

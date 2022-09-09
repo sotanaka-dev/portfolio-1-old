@@ -867,7 +867,7 @@ input[type=number] {
   align-items: center;
   gap: 20px;
 }
-.cart__delete-wrap {
+.cart__remove-wrap {
   position: relative;
 }
 .cart__speech-balloon {
