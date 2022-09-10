@@ -8,6 +8,10 @@ class CartItem extends Component
 {
     public $item;
 
+    protected $listeners = [
+        'set' => '$set',
+    ];
+
     public function mount()
     {
         $this->item_id = $this->item['id'];
@@ -18,29 +22,17 @@ class CartItem extends Component
         $this->qty     = $this->item['qty'];
     }
 
+    public function updatedQty()
+    {
+        $this->updateQtyOfItemsInSession();
+    }
+
     public function render()
     {
         $this->emitTo('components.total-amount-in-cart', 'refresh');
         $this->emitTo('components.qty-in-cart', 'refresh');
 
         return view('livewire.cart-item');
-    }
-
-    public function increment()
-    {
-        if ($this->qty < $this->stock) {
-            $this->qty++;
-            $this->updateQtyOfItemsInSession();
-        }
-    }
-
-    public function decrement()
-    {
-        /* TODO: マジックナンバーを改善 */
-        if ($this->qty > 1) {
-            $this->qty--;
-            $this->updateQtyOfItemsInSession();
-        }
     }
 
     private function updateQtyOfItemsInSession()

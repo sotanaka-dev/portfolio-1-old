@@ -8,11 +8,10 @@ use Livewire\Component;
 class SpinBtn extends Component
 {
 
-    private const MIN_VALUE = 1;
+    private const LOWER_LIMIT = 1;
 
-    public $max_value;
-    public $value;
-
+    public $upper_limit;
+    public $qty;
 
     public function render()
     {
@@ -21,15 +20,17 @@ class SpinBtn extends Component
 
     public function increment()
     {
-        if ($this->value < $this->max_value) {
-            $this->value++;
+        if ($this->qty < $this->upper_limit) {
+            $this->qty++;
+            $this->emitUp('set', 'qty', $this->qty);
         }
     }
 
     public function decrement()
     {
-        if ($this->value > self::MIN_VALUE) {
-            $this->value--;
+        if ($this->qty > self::LOWER_LIMIT) {
+            $this->qty--;
+            $this->emitUp('set', 'qty', $this->qty);
         }
     }
 }
