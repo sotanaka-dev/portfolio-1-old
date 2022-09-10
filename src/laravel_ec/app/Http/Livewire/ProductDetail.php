@@ -13,14 +13,6 @@ class ProductDetail extends Component
     private const DIFF_BTW_COUNT_AND_INDEX = 1;
     private const REGEX_FOR_ALL_FILES = '*.*';
 
-    public $product_id;
-    public $product;
-    public $category_name;
-    public $image_paths;
-    public $max_length;
-    public $main_image_path;
-    public $thumbnail_index;
-
     public function mount(Request $request)
     {
         if (!$request->has('id')) {

@@ -1,4 +1,4 @@
-<div class="cart__item" id="{{ $item_id }}">
+<div class="cart__item">
     <a class="cart__item-image" href='{{ route('products.detail', ['id' => $item_id]) }}'>
         <img class="image" src="{{ asset(current(glob($path . '*.*'))) }}">
     </a>
