@@ -1,14 +1,14 @@
 <div class="cart__item">
-    <a class="cart__item-image" href='{{ route('products.detail', ['id' => $item_id]) }}'>
-        <img class="image" src="{{ asset(current(glob($path . '*.*'))) }}">
+    <a class="cart__item-image" href='{{ route('products.detail', ['id' => $item['id']]) }}'>
+        <img class="image" src="{{ asset(current(glob($item['path'] . '*.*'))) }}">
     </a>
 
     <div class="cart__info-group">
-        <p class="cart__item-name">{{ $name }}</p>
-        <p class="cart__item-price">&yen;{{ number_format($price) }}</p>
+        <p class="cart__item-name">{{ $item['name'] }}</p>
+        <p class="cart__item-price">&yen;{{ number_format($item['price']) }}</p>
 
         <div class="form cart__form">
-            @livewire('components.spin-btn', ['qty' => $qty, 'upper_limit' => $stock])
+            @livewire('components.spin-btn', ['qty' => $qty, 'upper_limit' => $item['stock']])
 
             <div class="cart__remove-wrap">
                 <button class="speech-balloon-trigger" wire:click="removeItem">

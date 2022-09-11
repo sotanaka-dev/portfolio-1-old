@@ -7,6 +7,7 @@ use Livewire\Component;
 class CartItem extends Component
 {
     public $item;
+    public $qty;
 
     protected $listeners = [
         'set' => '$set',
@@ -14,12 +15,7 @@ class CartItem extends Component
 
     public function mount()
     {
-        $this->item_id = $this->item['id'];
-        $this->name    = $this->item['name'];
-        $this->price   = $this->item['price'];
-        $this->path    = $this->item['path'];
-        $this->stock   = $this->item['stock'];
-        $this->qty     = $this->item['qty'];
+        $this->qty = $this->item['qty'];
     }
 
     public function updatedQty()
@@ -39,7 +35,7 @@ class CartItem extends Component
     {
         /* NOTE: コレクションを一度配列に変換しないと配列内の要素を更新できない */
         $items = \Util::getItemsInTheSession()->toArray();
-        $items[$this->item_id]['qty'] = $this->qty;
+        $items[$this->item['id']]['qty'] = $this->item['qty'];
 
         session()->put('items', collect($items));
     }
@@ -47,7 +43,7 @@ class CartItem extends Component
     public function removeItem()
     {
         $items = \Util::getItemsInTheSession();
-        $items->forget($this->item_id);
+        $items->forget($this->item['id']);
 
         if ($items->isEmpty()) {
             session()->forget('items');
