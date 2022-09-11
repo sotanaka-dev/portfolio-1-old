@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{ asset('css/destyle.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+    <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
+
     @livewireStyles
 </head>
 

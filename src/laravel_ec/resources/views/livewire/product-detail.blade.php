@@ -10,19 +10,19 @@
         <p class="detail__category-name">Category:&nbsp;{{ $category_name }}</p>
         <p class="detail__sentence">{{ $product->description }}</p>
 
-        @if ($product->stock >= 1)
-            @if ($product->stock > 10)
+        @if ($stock >= 1)
+            @if ($stock > 10)
                 <p class="detail__stock-status text-success">
                     <i class="fa-solid fa-check"></i>&nbsp;在庫あり
                 </p>
             @else
                 <p class="detail__stock-status text-danger">
-                    <i class="fa-solid fa-triangle-exclamation"></i>&nbsp;残り{{ $product->stock }}点
+                    <i class="fa-solid fa-triangle-exclamation"></i>&nbsp;残り{{ $stock }}点
                 </p>
             @endif
 
             <div class="detail__spin-btn">
-                @livewire('components.spin-btn', ['qty' => $qty, 'upper_limit' => $product->stock])
+                @include('livewire.components.spin-btn')
             </div>
 
             <button class="btn btn--lg btn--black" type="submit" wire:click="addProductToCart">

@@ -11,12 +11,7 @@ class ProductDetail extends Component
 {
 
     private const INIT_VALUE_OF_SPIN_BTN = 1;
-
     public $qty = self::INIT_VALUE_OF_SPIN_BTN;
-
-    protected $listeners = [
-        'set' => '$set',
-    ];
 
     public function mount(Request $request)
     {
@@ -26,6 +21,7 @@ class ProductDetail extends Component
         $this->product_id      = $request->get('id');
         $this->product         = $this->getProduct();
         $this->category_name   = $this->getCategoryName();
+        $this->stock           = $this->product->stock;
     }
 
     public function render()
@@ -33,6 +29,18 @@ class ProductDetail extends Component
         return view('livewire.product-detail')
             ->extends('layouts.template')
             ->section('content');
+    }
+
+    /* TODO: リファクタリングしたい */
+    public function updatedQty()
+    {
+        if ($this->qty < self::INIT_VALUE_OF_SPIN_BTN || $this->qty === '') {
+            $this->qty = self::INIT_VALUE_OF_SPIN_BTN;
+        }
+
+        if ($this->qty > $this->stock) {
+            $this->qty = $this->stock;
+        }
     }
 
     private function getProduct()
@@ -60,6 +68,9 @@ class ProductDetail extends Component
         if ($items->has($this->product_id)) {
             $items = $items->toArray();
             $items[$this->product_id]['qty'] += $this->qty;
+            if ($items[$this->product_id]['qty'] > $this->stock) {
+                $items[$this->product_id]['qty'] = $this->stock;
+            }
         } else {
             $item = $this->product->toArray();
             $item['qty'] = $this->qty;

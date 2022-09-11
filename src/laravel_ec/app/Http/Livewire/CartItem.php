@@ -6,21 +6,13 @@ use Livewire\Component;
 
 class CartItem extends Component
 {
+    private const LOWER_LIMIT_OF_SPIN_BTN = 1;
     public $item;
-    public $qty;
-
-    protected $listeners = [
-        'set' => '$set',
-    ];
 
     public function mount()
     {
-        $this->qty = $this->item['qty'];
-    }
-
-    public function updatedQty()
-    {
-        $this->updateQtyOfItemsInSession();
+        $this->qty   = $this->item['qty'];
+        $this->stock = $this->item['stock'];
     }
 
     public function render()
@@ -31,11 +23,29 @@ class CartItem extends Component
         return view('livewire.cart-item');
     }
 
+    /* TODO: リファクタリングしたい */
+    public function updatedQty()
+    {
+        if ($this->qty === '') {
+            $this->qty = self::LOWER_LIMIT_OF_SPIN_BTN;
+        }
+
+        if ($this->qty < self::LOWER_LIMIT_OF_SPIN_BTN) {
+            $this->removeItem();
+            return;
+        }
+
+        if ($this->qty > $this->stock) {
+            $this->qty = $this->stock;
+        }
+
+        $this->updateQtyOfItemsInSession();
+    }
+
     private function updateQtyOfItemsInSession()
     {
-        /* NOTE: コレクションを一度配列に変換しないと配列内の要素を更新できない */
         $items = \Util::getItemsInTheSession()->toArray();
-        $items[$this->item['id']]['qty'] = $this->item['qty'];
+        $items[$this->item['id']]['qty'] = $this->qty;
 
         session()->put('items', collect($items));
     }

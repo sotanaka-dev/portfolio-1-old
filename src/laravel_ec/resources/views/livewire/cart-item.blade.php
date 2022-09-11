@@ -8,14 +8,15 @@
         <p class="cart__item-price">&yen;{{ number_format($item['price']) }}</p>
 
         <div class="form cart__form">
-            @livewire('components.spin-btn', ['qty' => $qty, 'upper_limit' => $item['stock']])
+
+            @include('livewire.components.spin-btn')
 
             <div class="cart__remove-wrap">
                 <button class="speech-balloon-trigger" wire:click="removeItem">
                     <i class="fa-solid fa-trash-can fa-lg"></i>
                 </button>
 
-                <span class="cart__speech-balloon speech-balloon speech-balloon--left">お気に入りから削除</span>
+                <span class="cart__speech-balloon speech-balloon speech-balloon--left">カートから削除</span>
             </div>
         </div>
     </div>

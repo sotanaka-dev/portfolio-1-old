@@ -435,9 +435,13 @@ body {
 .spin-btn {
     overflow: hidden;
     display: flex;
-    align-items: center;
-    border: solid 1px $gray;
+    width: 120px;
     border-radius: $radius_value_circle;
+    border: solid 1px $gray;
+
+    & > input {
+        padding: 0;
+    }
 
     &--minus,
     &--plus {

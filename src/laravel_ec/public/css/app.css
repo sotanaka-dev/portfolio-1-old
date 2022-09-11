@@ -368,9 +368,12 @@ body {
 .spin-btn {
   overflow: hidden;
   display: flex;
-  align-items: center;
-  border: solid 1px #888;
+  width: 120px;
   border-radius: 9999px;
+  border: solid 1px #888;
+}
+.spin-btn > input {
+  padding: 0;
 }
 .spin-btn--minus, .spin-btn--plus {
   padding: 10px;
