@@ -1,6 +1,6 @@
 @section('title', 'FavList')
 
-<div class="fav-list  container-sm">
+<div class="fav-list  container-lg">
     <script>
         document.addEventListener('livewire:load', () => {
             let fav_list = JSON.parse(localStorage.getItem('fav_list'))

@@ -845,7 +845,7 @@ input[type=number] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 0;
+  padding: 24px 12px;
   border-top: 1px solid #ccc;
 }
 .cart__item:nth-last-of-type(2) {
@@ -868,7 +868,7 @@ input[type=number] {
 .cart__form {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px 48px;
 }
 .cart__remove-wrap {
   position: relative;
@@ -1138,7 +1138,7 @@ input[type=number] {
   .cart__info-group {
     flex-direction: column;
     align-items: flex-start;
-    row-gap: 20px;
+    row-gap: 24px;
   }
   .cart__total-amount-wrap {
     text-align: center;

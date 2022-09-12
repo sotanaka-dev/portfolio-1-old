@@ -30,13 +30,13 @@ class CartItem extends Component
             $this->qty = self::LOWER_LIMIT_OF_SPIN_BTN;
         }
 
+        if ($this->qty > $this->stock) {
+            $this->qty = $this->stock;
+        }
+
         if ($this->qty < self::LOWER_LIMIT_OF_SPIN_BTN) {
             $this->removeItem();
             return;
-        }
-
-        if ($this->qty > $this->stock) {
-            $this->qty = $this->stock;
         }
 
         $this->updateQtyOfItemsInSession();
