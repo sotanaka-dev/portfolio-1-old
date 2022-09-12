@@ -1,11 +1,4 @@
-<div class="detail__images">
-    <script>
-        document.addEventListener('livewire:load', () => {
-            document.getElementsByClassName('detail__thumbnail')[@this.thumbnail_index]
-                .classList.add('detail__thumbnail--select')
-        })
-    </script>
-
+<div x-data x-init="$nextTick(() => { $refs.{{ $prefix . $tmb_index }}.classList.add('detail__tmb--select') })" class="detail__images">
     <div class="detail__main-image-wrap">
         <img class="detail__main-image image" src="{{ asset($main_image_path) }}">
 
@@ -13,23 +6,21 @@
             @livewire('fav.icon', ['product' => $product])
         </span>
 
-        <span class="detail__image-replacement detail__image-replacement--prev fa-stack"
-            wire:click="decrementThumbnailIndex">
+        <span wire:click="decrementTmbIndex" class="detail__image-replacement detail__image-replacement--prev fa-stack">
             <i class="fa-solid fa-circle fa-stack-2x fa-inverse"></i>
             <i class="fa-solid fa-angle-left fa-stack-1x"></i>
         </span>
 
-        <span class="detail__image-replacement detail__image-replacement--next fa-stack"
-            wire:click="incrementThumbnailIndex">
+        <span wire:click="incrementTmbIndex" class="detail__image-replacement detail__image-replacement--next fa-stack">
             <i class="fa-solid fa-circle fa-stack-2x fa-inverse"></i>
             <i class="fa-solid fa-angle-right fa-stack-1x"></i>
         </span>
     </div>
 
-    <div class="detail__thumbnail-wrap">
+    <div class="detail__tmb-wrap">
         @foreach ($image_paths as $path)
-            <img class="detail__thumbnail" src="{{ asset($path) }}"
-                wire:click="setThumbnailIndex({{ $loop->index }})">
+            <img x-ref="{{ $prefix . $loop->index }}" wire:click="setTmbIndex({{ $loop->index }})" class="detail__tmb"
+                src="{{ asset($path) }}">
         @endforeach
     </div>
 </div>

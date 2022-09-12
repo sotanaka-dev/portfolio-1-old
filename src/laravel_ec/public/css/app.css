@@ -769,16 +769,16 @@ input[type=number] {
 .detail__image-replacement--next {
   right: 12px;
 }
-.detail__thumbnail-wrap {
+.detail__tmb-wrap {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
 }
-.detail__thumbnail {
+.detail__tmb {
   width: calc(25% - 9px);
   cursor: pointer;
 }
-.detail__thumbnail--select {
+.detail__tmb--select {
   outline: solid 4px #888;
 }
 .detail__name {

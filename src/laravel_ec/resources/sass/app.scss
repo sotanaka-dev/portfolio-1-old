@@ -915,13 +915,13 @@ input[type="number"] {
         }
     }
 
-    &__thumbnail-wrap {
+    &__tmb-wrap {
         display: flex;
         flex-wrap: wrap;
         gap: 12px;
     }
 
-    &__thumbnail {
+    &__tmb {
         width: calc(25% - 9px);
         cursor: pointer;
 

@@ -11,51 +11,48 @@ class SwitchProductImage extends Component
     private const REGEX_FOR_ALL_FILES = '*.*';
 
     public $product;
-    public $thumbnail_index = self::START_VALUE_OF_INDEX;
+    public $prefix = 'tmb_';
+    public $tmb_index = self::START_VALUE_OF_INDEX;
+    public $main_image_path;
 
     public function mount()
     {
-        $this->image_paths     = glob($this->product->path . self::REGEX_FOR_ALL_FILES);
-        $this->max_length      = count($this->image_paths) - self::DIFF_BTW_COUNT_AND_INDEX;
-        $this->main_image_path = current($this->image_paths);
+        $this->image_paths = glob($this->product->path . self::REGEX_FOR_ALL_FILES);
+        $this->max_length  = count($this->image_paths) - self::DIFF_BTW_COUNT_AND_INDEX;
     }
 
     public function render()
     {
+        $this->replacementMainImage();
+
         return view('livewire.components.switch-product-image');
-    }
-
-    public function setThumbnailIndex($index)
-    {
-        $this->thumbnail_index = $index;
-        $this->replacementMainImage();
-    }
-
-    public function decrementThumbnailIndex()
-    {
-        if ($this->thumbnail_index === self::START_VALUE_OF_INDEX) {
-            $this->thumbnail_index = $this->max_length;
-        } else {
-            $this->thumbnail_index--;
-        }
-
-        $this->replacementMainImage();
-    }
-
-    public function incrementThumbnailIndex()
-    {
-        if ($this->thumbnail_index === $this->max_length) {
-            $this->thumbnail_index = self::START_VALUE_OF_INDEX;
-        } else {
-            $this->thumbnail_index++;
-        }
-
-        $this->replacementMainImage();
     }
 
     private function replacementMainImage()
     {
-        $this->main_image_path = $this->image_paths[$this->thumbnail_index];
-        $this->dispatchBrowserEvent('select_thumbnail', ['id' => $this->thumbnail_index]);
+        $this->main_image_path = $this->image_paths[$this->tmb_index];
+    }
+
+    public function setTmbIndex($index)
+    {
+        $this->tmb_index = $index;
+    }
+
+    public function decrementTmbIndex()
+    {
+        if ($this->tmb_index === self::START_VALUE_OF_INDEX) {
+            $this->tmb_index = $this->max_length;
+            return;
+        }
+        $this->tmb_index--;
+    }
+
+    public function incrementTmbIndex()
+    {
+        if ($this->tmb_index === $this->max_length) {
+            $this->tmb_index = self::START_VALUE_OF_INDEX;
+            return;
+        }
+        $this->tmb_index++;
     }
 }

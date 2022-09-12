@@ -134,11 +134,3 @@ function insertFavEmptyMessage() {
     document.getElementById("fav_list_empty").classList.add("fav-list--show");
     document.getElementById("fav_list_btn").classList.add("fav-list--show");
 }
-
-/* 商品詳細 */
-
-window.addEventListener("select_thumbnail", (event) => {
-    document
-        .getElementsByClassName("detail__thumbnail")
-        [event.detail.id].classList.add("detail__thumbnail--select");
-});
