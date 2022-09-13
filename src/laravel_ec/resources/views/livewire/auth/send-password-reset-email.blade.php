@@ -1,7 +1,7 @@
 @section('title', 'ResetPassword')
 
 <div class="container-sm">
-    @include('components.full-overlay', [
+    @include('components.loading-message', [
         'target' => 'sendResetLinkEmail',
         'message' => __('messages.loading.send_mail'),
     ])

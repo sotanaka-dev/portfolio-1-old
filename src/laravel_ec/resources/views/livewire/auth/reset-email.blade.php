@@ -1,7 +1,7 @@
 @section('title', 'ResetEmail')
 
 <div class="container-sm">
-    @include('components.full-overlay', [
+    @include('components.loading-message', [
         'target' => 'resetEmail',
         'message' => __('messages.loading.send_mail'),
     ])

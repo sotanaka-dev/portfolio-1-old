@@ -15,16 +15,6 @@ window.addEventListener("scroll", (event) => {
     last_point = scroll_point;
 });
 
-/* フラッシュメッセージ */
-window.addEventListener("show_flash_message", (event) => {
-    const alert = document.getElementById("alert");
-    alert.classList.add("alert--show");
-
-    setTimeout(() => {
-        alert.classList.remove("alert--show");
-    }, 3000);
-});
-
 /* 商品ページ */
 window.addEventListener("page_switching", (event) => {
     window.scrollTo(0, 0);
@@ -50,11 +40,6 @@ function passwordMaskSwitch(text_box_id, eye_icon_id) {
         text_box.type = "text";
         eye_icon.className = "fa-solid fa-eye-slash";
     }
-}
-
-/* 確認ダイアログ */
-function confirmation(message) {
-    return confirm(message);
 }
 
 /* お気に入り */

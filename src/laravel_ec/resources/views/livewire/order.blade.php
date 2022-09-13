@@ -1,7 +1,7 @@
 @section('title', 'Order')
 
 <div class="order container-sm">
-    @include('components.full-overlay', [
+    @include('components.loading-message', [
         'target' => 'complete',
         'message' => __('messages.loading.order'),
     ])

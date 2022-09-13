@@ -1,7 +1,7 @@
 @section('title', 'Register')
 
 <div class="container-sm h-adr">
-    @include('components.full-overlay', [
+    @include('components.loading-message', [
         'target' => 'register',
         'message' => __('messages.loading.register'),
     ])

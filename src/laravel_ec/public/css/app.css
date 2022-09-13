@@ -444,7 +444,7 @@ input[type=number] {
   width: 50%;
 }
 
-/* ローディング中のオーバーレイ */
+/* フルオーバーレイ */
 .full-overlay {
   z-index: 2147483647;
   position: fixed;
@@ -454,7 +454,9 @@ input[type=number] {
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
 }
-.full-overlay__message {
+
+/* ロード中メッセージ */
+.loading-message {
   position: fixed;
   left: 50%;
   top: 50%;
