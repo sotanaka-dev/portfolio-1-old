@@ -17,7 +17,4 @@
             </p>
         </a>
     </div>
-
-    {{-- NOTE: ページ切り替え、検索、並べ替えで商品ページが再レンダリングされる際の処理 --}}
-    {{ $this->dispatchBrowserEvent('after_async_process', ['id' => $product->id]) }}
 @endforeach

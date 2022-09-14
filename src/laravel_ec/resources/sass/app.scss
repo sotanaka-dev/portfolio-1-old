@@ -21,6 +21,10 @@ $header_height: 100px;
 
 /* ---------- 共通部分 ---------- */
 
+[x-cloak] {
+    display: none !important;
+}
+
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
@@ -619,14 +623,6 @@ input[type="number"] {
 
     &__rm {
         color: $pink;
-    }
-
-    &__load {
-        color: $light_gray;
-    }
-
-    &--hide {
-        display: none;
     }
 
     &__speech-balloon {

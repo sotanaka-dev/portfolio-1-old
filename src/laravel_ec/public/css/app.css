@@ -1,6 +1,10 @@
 @charset "UTF-8";
 /* ---------- 変数 ---------- */
 /* ---------- 共通部分 ---------- */
+[x-cloak] {
+  display: none !important;
+}
+
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
@@ -523,12 +527,6 @@ input[type=number] {
 }
 .fav-icon__rm {
   color: #e81e63;
-}
-.fav-icon__load {
-  color: #ccc;
-}
-.fav-icon--hide {
-  display: none;
 }
 .fav-icon__speech-balloon {
   left: -4px;
