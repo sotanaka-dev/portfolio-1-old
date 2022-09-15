@@ -8,10 +8,6 @@ class ItemList extends Component
 {
     public $fav_items;
 
-    protected $listeners = [
-        'refresh' => '$refresh',
-    ];
-
     public function mount()
     {
         $this->fav_items = [];

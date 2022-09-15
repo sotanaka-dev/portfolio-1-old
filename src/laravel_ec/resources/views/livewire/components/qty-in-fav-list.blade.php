@@ -1,2 +1,3 @@
-<span x-init="fav_items = JSON.parse(localStorage.getItem('fav_items') || '{}')" x-text="Object.keys(fav_items).length" class="header__counter">
+<span x-init="qty = Object.keys(JSON.parse(localStorage.getItem('fav_items') || '{}')).length" x-data="{ qty: @entangle('qty') }"class="header__counter">
+    {{ $qty }}
 </span>
