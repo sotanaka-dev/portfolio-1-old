@@ -6,11 +6,15 @@ use Livewire\Component;
 
 class ItemList extends Component
 {
-    public $fav_list;
+    public $fav_items;
+
+    protected $listeners = [
+        'refresh' => '$refresh',
+    ];
 
     public function mount()
     {
-        $this->fav_list = [];
+        $this->fav_items = [];
     }
 
     public function render()

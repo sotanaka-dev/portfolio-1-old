@@ -571,18 +571,6 @@ input[type=number] {
   -ms-transform: translate(-50%, -50%);
   color: #fff;
 }
-.fav-list__empty-item-message {
-  display: none;
-}
-.fav-list__btn {
-  display: none;
-}
-.fav-list--show {
-  display: block;
-}
-.fav-list--hide {
-  display: none;
-}
 
 /* 吹き出し */
 .speech-balloon {

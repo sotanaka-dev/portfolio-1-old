@@ -675,22 +675,6 @@ input[type="number"] {
         -ms-transform: translate(-50%, -50%);
         color: $white;
     }
-
-    &__empty-item-message {
-        display: none;
-    }
-
-    &__btn {
-        display: none;
-    }
-
-    &--show {
-        display: block;
-    }
-
-    &--hide {
-        display: none;
-    }
 }
 
 /* 吹き出し */
